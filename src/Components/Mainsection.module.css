@@ -32,3 +32,10 @@
         padding: 3rem 2.4rem;
     }
 } 
+
+@media (max-width: 440px){
+    .Mainsection {
+        grid-template-columns:1fr;
+        padding: 3rem 2.4rem;
+    }
+}

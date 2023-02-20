@@ -131,3 +131,25 @@
     column-gap: 3rem ;
   }
 }
+
+@media (max-width:400px) {
+  .banner {
+ flex-direction: column;
+  height: 100%;
+  padding: 4rem 4rem ; 
+  row-gap: 3rem;
+  }
+
+  
+  .companyDescription {
+    
+    text-align: justify;
+  }
+  
+  .contactBtn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+}

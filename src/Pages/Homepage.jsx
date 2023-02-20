@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Banner from '../Components/Banner';
 import Filter from '../Components/Filter';
 import Mainsection from '../Components/Mainsection';
+import WishListModal from '../Modals/WishListModal';
 import classes from './Homepage.module.css';
 
 const Homepage = () => {
@@ -16,6 +17,7 @@ const Homepage = () => {
 
   return (
     <div className={classes.homepage}>
+        
         <Banner />
         <Filter startFilterHandler={startFilterHandler}/>
         <Mainsection isFiltered={isFiltered} filteredSearch={filteredSearch}/>

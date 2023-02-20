@@ -181,3 +181,70 @@ input[type="date"]{
         padding-left: 3px;
     }
 }
+
+@media (max-width:450px) {
+    .filter {
+        width: 100%;
+        padding: 1.2rem 3rem;   
+        padding-bottom: 6rem;
+        position: relative;
+    }
+    
+    .filter h3 {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 1.6rem;
+    }
+    
+    .filter form {
+        justify-content: center;
+        column-gap: .4rem ;
+    }
+    
+    .filterBtn {
+        font-size: 1.2rem;
+       padding: .6rem 1.4rem;
+       border-radius: 2px;
+       cursor: pointer;
+       position: absolute;
+       top:12rem;
+    }
+    
+    .filterItem {
+        display: flex;
+        flex-direction: column;
+        padding: .6rem 1rem;
+        padding-top: 0;
+        border-left: 2px solid #6666664d;
+    }
+    
+    .filterItem:first-child {
+        padding-left: 0;
+        border: none;
+    }
+    
+    .filterItem:nth-child(4) {
+        padding-right: 1.2rem;
+    }
+    
+    .filterItem label {
+        font-size: 1.2rem;
+        padding: .4rem;
+    }
+    
+    .filterItem select {
+        font-size: 1.2rem;
+    }
+
+    .filterItem select * {
+        padding: .6rem;
+    }
+    
+    input[type="date"]{
+        font-size: 1.2rem;
+    }
+    
+    ::-webkit-calendar-picker-indicator{
+        padding-left: 3px;
+    }
+}
