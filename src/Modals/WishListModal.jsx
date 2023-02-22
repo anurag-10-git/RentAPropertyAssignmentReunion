@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import classes from "./WishListModal.module.css";
+import WishlistContext from "../Context/whishlistContext";
+import WishlistItem from "../Components/WishlistItem";
 
 
 const Backdrop = (props) => {
 
     return <div className={`${classes.backdrop} ${props.showModal ? classes.backdropMove : "" }`} onClick={props.closeModal} />;
+    
   };
   
   const ModalOverlay = (props) => {
-  
+
+    const { wishlist } = useContext(WishlistContext);
+ 
     return (
        <div className={`${classes.modal} ${ props.showModal ? classes.overlayMove : "" }`}>
           <h3>Your Whishlist</h3>
-          <p>Sorry! function currently unavailable.</p>
+          {wishlist.map(item => <WishlistItem key={item.id} id={item.id} name={item.name} price={item.price}/>) }
       </div>
     );
   };
