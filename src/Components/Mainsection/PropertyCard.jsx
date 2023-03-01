@@ -1,28 +1,32 @@
 import classes from "./PropertyCard.module.css";
-import WishlistContext from "../Context/whishlistContext";
+import WishlistContext from "../../Context/whishlistContext";
 import { useContext, useState } from "react";
 
 const PropertyCard = ({ property }) => {
-  const { wishlist, setWishlist  } = useContext(WishlistContext);
-  // const [isAddedWish, setIsAddedWish] = useState(false);
-  
+  const { wishlist, setWishlist } = useContext(WishlistContext);
+  const [isAddedWish, setIsAddedWish] = useState(false);
 
   const addWishlistHandler = () => {
-
-    if (wishlist.find((item) => item.name === property.name) !== undefined ) {
-      const newWishlist = wishlist.filter(item => item.id.toString() !== property.id.toString()); 
+    if (wishlist.find((item) => item.name === property.name) !== undefined) {
+      const newWishlist = wishlist.filter(
+        (item) => item.id.toString() !== property.id.toString()
+      );
+      setIsAddedWish(false);
       setWishlist(newWishlist);
       return;
-
     }
 
     setWishlist((prev) => [
-      {id: property.id , name: property.name , price: property.price, isWishlisted: true },
+      {
+        id: property.id,
+        name: property.name,
+        price: property.price,
+        isWishlisted: true,
+      },
       ...prev,
     ]);
-    
-    // setIsAddedWish(true);
 
+    setIsAddedWish(true);
   };
 
   return (
@@ -42,8 +46,11 @@ const PropertyCard = ({ property }) => {
             <span className={classes.perMonth}>/month</span>
           </span>{" "}
           <span onClick={addWishlistHandler}>
-          <ion-icon className={classes.wishbtn} name="heart-outline"></ion-icon>
-            {/* { isAddedWish ? <ion-icon className={classes.wishbtn} name="heart"></ion-icon>:<ion-icon className={classes.wishbtn} name="heart-outline"></ion-icon> } */}
+            {/* <ion-icon
+              className={classes.wishbtn}
+              name="heart-outline"
+            ></ion-icon> */}
+            { isAddedWish ? <ion-icon className={classes.wishbtn} name="heart"></ion-icon>:<ion-icon className={classes.wishbtn} name="heart-outline"></ion-icon> }
           </span>
         </div>
         <h3>{property.name}</h3>
