@@ -3,14 +3,14 @@ import propertyData from '../assets/PropertyData';
 
 const propertyContext = React.createContext();
 
+export const PropertyContextProvider = (props) => {
+  const [properties, setProperties] = useState(propertyData);
 
-export const PropertyContextProvider = (props) => { 
-    const [properties, setProperties] = useState(propertyData);
-return (
+  return (
     <propertyContext.Provider value={{properties, setProperties}}>
-        {props.children}
+      {props.children}
     </propertyContext.Provider>
-)
-} 
+  )
+}
 
 export default propertyContext;
