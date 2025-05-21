@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Banner from "../Components/Banner/Banner";
 import Filter from "../Components/Mainsection/Filter";
 import Mainsection from "../Components/Mainsection/Mainsection";
-// import WishListModal from "../Modals/WishListModal";
 import classes from "./Homepage.module.css";
 
 const Homepage = () => {
   const [isFiltered, setIsFiltered] = useState(false);
   const [filteredSearch, setFilteredSearch] = useState([]);
 
-  const startFilterHandler = (filteredProperties) => {
+  const startFilterHandler = useCallback((filteredProperties) => {
     setFilteredSearch(filteredProperties);
     setIsFiltered(true);
-  };
+  }, [])
 
   return (
     <div className={classes.homepage}>

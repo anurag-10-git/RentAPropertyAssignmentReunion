@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./Filter.module.css";
 import propertyContext from "../../Context/propertyContext";
 
-const Filter = (props) => {
+const Filter = ({ startFilterHandler }) => {
   const [location, setLocation] = useState("");
   const [when, setWhen] = useState("");
   const [price, setPrice] = useState("");
@@ -17,20 +17,16 @@ const Filter = (props) => {
   const changeWhenHandler = (event) => {
     setWhen(event.target.value);
   };
-  console.log(when);
 
   const changePriceHandler = (event) => {
     setPrice(event.target.value);
-    console.log(price);
   };
 
   const changeTypeHandler = (event) => {
     setType(event.target.value);
   };
 
-  const onSearchSubmitHandler = (event) => {
-    event.preventDefault();
-
+  useEffect(() => {
     let newFilteredSearch = properties;
 
     if (location.toString() === "IND") {
@@ -89,13 +85,13 @@ const Filter = (props) => {
       );
     }
 
-    props.startFilterHandler(newFilteredSearch);
-  };
+    startFilterHandler(newFilteredSearch);
+  }, [location, price, properties, startFilterHandler, type, when])
 
   return (
     <div className={classes.filter}>
       <h3>Search properties to rent</h3>
-      <form onSubmit={onSearchSubmitHandler}>
+      <form>
         <div className={classes.filterItem}>
           <label htmlFor="">Location</label>
           <select value={location} onChange={changeLocationHandler}>
@@ -138,9 +134,6 @@ const Filter = (props) => {
             <option value="villa">Villa</option>
           </select>
         </div>
-        <button type="submit" className={classes.filterBtn}>
-          Search
-        </button>
       </form>
     </div>
   );

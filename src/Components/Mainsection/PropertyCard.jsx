@@ -6,18 +6,16 @@ import propertyContext from "../../Context/propertyContext";
 const PropertyCard = ({ property }) => {
   const { wishlist, setWishlist } = useContext(WishlistContext);
   const { properties, setProperties} = useContext(propertyContext)
-  // const [isAddedWish, setIsAddedWish] = useState(false);
 
   const addWishlistHandler = () => {
     if (wishlist.find((item) => item.name === property.name) !== undefined) {
-      
       const item = properties.map( e => {
         if(e.id === property.id){
          e.wishlisted = false
-        } 
+        }
         return e;
       });
- 
+
       setProperties(item);
 
       const newWishlist = wishlist.filter(
@@ -27,16 +25,16 @@ const PropertyCard = ({ property }) => {
       return;
     }
 
-    setWishlist((prev) => {   
+    setWishlist((prev) => {
      const item = properties.map( e => {
        if(e.id === property.id){
         e.wishlisted = true
-       } 
+       }
        return e;
      });
 
      setProperties(item);
-      
+
      return [
       {
         id: property.id,
@@ -65,11 +63,7 @@ const PropertyCard = ({ property }) => {
             <span className={classes.perMonth}>/month</span>
           </span>{" "}
           <span onClick={addWishlistHandler}>
-            {/* <ion-icon
-              className={classes.wishbtn}
-              name="heart-outline"
-            ></ion-icon> */}
-            { property.wishlisted  || property.wishlisted === undefined ? <ion-icon className={classes.wishbtn} name="heart"></ion-icon>:<ion-icon className={classes.wishbtn} name="heart-outline"></ion-icon> }
+            {property.wishlisted  || property.wishlisted === undefined ? <ion-icon className={classes.wishbtn} name="heart"></ion-icon>:<ion-icon className={classes.wishbtn} name="heart-outline"></ion-icon>}
           </span>
         </div>
         <h3>{property.name}</h3>
